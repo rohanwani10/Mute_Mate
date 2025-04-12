@@ -23,7 +23,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     private final NotificationReceiver broadcastReceiver;
 
     // Action for the broadcast intent
-    public static final String ACTION_NEW_NOTIFICATION = "com.yourapplication.ACTION_NEW_NOTIFICATION";
+    public static final String ACTION_NEW_NOTIFICATION = "com.techme.ACTION_NEW_NOTIFICATION";
     public static final String EXTRA_NOTIFICATION_TITLE = "notification_title";
     public static final String EXTRA_NOTIFICATION_MESSAGE = "notification_message";
 
@@ -36,7 +36,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     @NonNull
     @Override
     public NotificationViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.notification_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.notification_template, parent, false);
         return new NotificationViewHolder(view);
     }
 

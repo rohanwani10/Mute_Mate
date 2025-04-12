@@ -1,16 +1,30 @@
 package com.techme.mutemate;
 
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.AnimationUtils;
+import android.view.animation.OvershootInterpolator;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,12 +39,28 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        ImageView Profile = findViewById(R.id.profile);
+        new Handler().postDelayed(this::animateStartup, 300);
+
+        // Set up click listeners for interactive elements
+        setupClickListeners();
+
+
+        ImageView Profile = findViewById(R.id.profileIcon);
+        ImageView Notification_btn = findViewById(R.id.notificationButton);
+
         Profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(MainActivity.this, "hello", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(MainActivity.this, Setting.class);
+                startActivity(intent);
+            }
+        });
+
+        Notification_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Notification.class);
                 startActivity(intent);
             }
         });
@@ -62,5 +92,180 @@ public class MainActivity extends AppCompatActivity {
         //    intent.putExtra(NotificationAdapter.EXTRA_NOTIFICATION_MESSAGE, message);
         //    LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
         //}
+    }
+
+    private void animateStartup() {
+        // Animate header section - Find view directly instead of using tags
+        TextView welcomeText = findViewById(R.id.welcomeText);
+        if (welcomeText != null) {
+            Animation fadeIn = AnimationUtils.loadAnimation(this, R.anim.fade_in);
+            welcomeText.startAnimation(fadeIn);
+        }
+
+        // Animate search bar with slide up and fade
+        CardView searchBar = findViewById(R.id.searchBarCard);
+        if (searchBar != null) {
+            Animation slideUp = AnimationUtils.loadAnimation(this, R.anim.slide_up);
+            Animation fadeIn = AnimationUtils.loadAnimation(this, R.anim.fade_in);
+            AnimationSet searchBarAnim = new AnimationSet(true);
+            searchBarAnim.addAnimation(fadeIn);
+            searchBarAnim.addAnimation(slideUp);
+            searchBar.startAnimation(searchBarAnim);
+        }
+
+        // Animate "Explore more" card
+        CardView exploreCard = findViewById(R.id.exploreCard);
+        if (exploreCard != null) {
+            exploreCard.setScaleX(0.8f);
+            exploreCard.setScaleY(0.8f);
+            exploreCard.setAlpha(0f);
+
+            exploreCard.animate()
+                    .scaleX(1f)
+                    .scaleY(1f)
+                    .alpha(1f)
+                    .setDuration(600)
+                    .setStartDelay(300)
+                    .setInterpolator(new OvershootInterpolator())
+                    .start();
+        }
+
+        // Animate popular lessons section
+        LinearLayout popularSection = findViewById(R.id.popularSection);
+        HorizontalScrollView videosScroll = findViewById(R.id.videosScrollView);
+
+        if (popularSection != null) {
+            popularSection.setAlpha(0f);
+            popularSection.animate()
+                    .alpha(1f)
+                    .setDuration(500)
+                    .setStartDelay(500)
+                    .start();
+        }
+
+        // Animate videos from right
+        if (videosScroll != null) {
+            videosScroll.setAlpha(0f);
+            Animation slideFromRight = AnimationUtils.loadAnimation(this, R.anim.from_right);
+            slideFromRight.setStartOffset(700);
+            videosScroll.startAnimation(slideFromRight);
+            videosScroll.animate().alpha(1f).setDuration(500).start();
+        }
+
+        // Animate testimonials section
+        LinearLayout testimonialSection = findViewById(R.id.testimonialSection);
+        HorizontalScrollView testimonialScroll = findViewById(R.id.testimonialScrollView);
+
+        if (testimonialSection != null) {
+            testimonialSection.setAlpha(0f);
+            testimonialSection.animate()
+                    .alpha(1f)
+                    .setDuration(500)
+                    .setStartDelay(900)
+                    .start();
+        }
+
+        // Animate testimonial cards from right
+        if (testimonialScroll != null) {
+            testimonialScroll.setAlpha(0f);
+            Animation slideTestimonials = AnimationUtils.loadAnimation(this, R.anim.from_right);
+            slideTestimonials.setStartOffset(1100);
+            testimonialScroll.startAnimation(slideTestimonials);
+            testimonialScroll.animate().alpha(1f).setDuration(500).start();
+        }
+
+        // Animate bottom navigation
+        CardView bottomNav = findViewById(R.id.bottomNavCard);
+        if (bottomNav != null) {
+            bottomNav.setTranslationY(100f);
+            bottomNav.animate()
+                    .translationY(0f)
+                    .setDuration(500)
+                    .setInterpolator(new AccelerateDecelerateInterpolator())
+                    .setStartDelay(300)
+                    .start();
+        }
+    }
+    private void setupClickListeners() {
+        // Add touch animations to bottom navigation icons
+        ImageView homeIcon = findViewById(R.id.homeIcon);
+        ImageView moduleIcon = findViewById(R.id.moduleIcon);
+        ImageView learningIcon = findViewById(R.id.learningIcon);
+        ImageView profileIcon = findViewById(R.id.profileIcon);
+
+        setupButtonAnimation(homeIcon);
+        setupButtonAnimation(moduleIcon);
+        setupButtonAnimation(learningIcon);
+        setupButtonAnimation(profileIcon);
+
+        // Add animations to notification button
+        ImageView notificationButton = findViewById(R.id.notificationButton);
+        setupButtonAnimation(notificationButton);
+
+        // Add animations to cards
+        CardView exploreCard = findViewById(R.id.main).findViewWithTag("exploreCard");
+        setupCardClickAnimation(exploreCard);
+
+        // Find all video cards in the horizontal scroll view
+        LinearLayout videosContainer = findViewById(R.id.main).findViewWithTag("videosContainer");
+        for (int i = 0; i < videosContainer.getChildCount(); i++) {
+            if (videosContainer.getChildAt(i) instanceof CardView) {
+                setupCardClickAnimation((CardView) videosContainer.getChildAt(i));
+            }
+        }
+
+        // Find all testimonial cards and add animations
+        LinearLayout testimonialsContainer = findViewById(R.id.main).findViewWithTag("testimonialsContainer");
+        for (int i = 0; i < testimonialsContainer.getChildCount(); i++) {
+            if (testimonialsContainer.getChildAt(i) instanceof CardView) {
+                setupCardClickAnimation((CardView) testimonialsContainer.getChildAt(i));
+            }
+        }
+    }
+
+    private void setupButtonAnimation(View view) {
+        Animation buttonPress = AnimationUtils.loadAnimation(this, R.anim.button_press);
+        Animation buttonRelease = AnimationUtils.loadAnimation(this, R.anim.button_release);
+
+        view.setOnTouchListener((v, event) -> {
+            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                v.startAnimation(buttonPress);
+                return true;
+            } else if (event.getAction() == MotionEvent.ACTION_UP) {
+                v.startAnimation(buttonRelease);
+                v.performClick();
+                return true;
+            }
+            return false;
+        });
+    }
+
+    private void setupCardClickAnimation(CardView cardView) {
+        cardView.setOnTouchListener((v, event) -> {
+            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                ObjectAnimator scaleDownX = ObjectAnimator.ofFloat(v, "scaleX", 0.95f);
+                ObjectAnimator scaleDownY = ObjectAnimator.ofFloat(v, "scaleY", 0.95f);
+                scaleDownX.setDuration(100);
+                scaleDownY.setDuration(100);
+                AnimatorSet scaleDown = new AnimatorSet();
+                scaleDown.play(scaleDownX).with(scaleDownY);
+                scaleDown.start();
+                return true;
+            } else if (event.getAction() == MotionEvent.ACTION_UP || event.getAction() == MotionEvent.ACTION_CANCEL) {
+                ObjectAnimator scaleUpX = ObjectAnimator.ofFloat(v, "scaleX", 1f);
+                ObjectAnimator scaleUpY = ObjectAnimator.ofFloat(v, "scaleY", 1f);
+                scaleUpX.setDuration(100);
+                scaleUpY.setDuration(100);
+                AnimatorSet scaleUp = new AnimatorSet();
+                scaleUp.play(scaleUpX).with(scaleUpY);
+                scaleUp.start();
+
+                if (event.getAction() == MotionEvent.ACTION_UP) {
+                    v.performClick();
+                }
+                return true;
+            }
+            return false;
+        });
     }
 }
