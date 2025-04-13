@@ -25,13 +25,26 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import org.w3c.dom.Text;
+
 
 public class MainActivity extends AppCompatActivity {
+    private DatabaseReference databaseReference;
+    private FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
+//        setContentView(R.layout.activity_main);
         setContentView(R.layout.activity_main);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -64,6 +77,43 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        ImageView learning_module = findViewById(R.id.moduleIcon);
+        learning_module.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, LearningModule.class);
+                startActivity(intent);
+            }
+        });
+
+        TextView welcomeText = findViewById(R.id.welcomeText);
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        databaseReference = FirebaseDatabase.getInstance().getReference("Users");
+
+
+        if (user != null) {
+            String userId = user.getUid();
+            databaseReference.child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot snapshot) {
+                    if (snapshot.exists()) {
+                        //Here, HelperClass.class tells Firebase that the data should be mapped to an instance of HelperClass.
+                        HelperClass userData = snapshot.getValue(HelperClass.class);
+                        if (userData != null) {
+                            welcomeText.setText("Hi, "+userData.getUsername());
+                              }
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError error) {
+                    Toast.makeText(MainActivity.this, "Failed to User Data. Pl. try Later. ", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+        }
+
         // In your Activity or Fragment
         // RecyclerView recyclerView = findViewById(R.id.recyclerView); // Make sure to add ID to your RecyclerView
         //NotificationAdapter notificationAdapter = new NotificationAdapter(this);
@@ -120,14 +170,7 @@ public class MainActivity extends AppCompatActivity {
             exploreCard.setScaleY(0.8f);
             exploreCard.setAlpha(0f);
 
-            exploreCard.animate()
-                    .scaleX(1f)
-                    .scaleY(1f)
-                    .alpha(1f)
-                    .setDuration(600)
-                    .setStartDelay(300)
-                    .setInterpolator(new OvershootInterpolator())
-                    .start();
+            exploreCard.animate().scaleX(1f).scaleY(1f).alpha(1f).setDuration(600).setStartDelay(300).setInterpolator(new OvershootInterpolator()).start();
         }
 
         // Animate popular lessons section
@@ -136,11 +179,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (popularSection != null) {
             popularSection.setAlpha(0f);
-            popularSection.animate()
-                    .alpha(1f)
-                    .setDuration(500)
-                    .setStartDelay(500)
-                    .start();
+            popularSection.animate().alpha(1f).setDuration(500).setStartDelay(500).start();
         }
 
         // Animate videos from right
@@ -158,11 +197,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (testimonialSection != null) {
             testimonialSection.setAlpha(0f);
-            testimonialSection.animate()
-                    .alpha(1f)
-                    .setDuration(500)
-                    .setStartDelay(900)
-                    .start();
+            testimonialSection.animate().alpha(1f).setDuration(500).setStartDelay(900).start();
         }
 
         // Animate testimonial cards from right
@@ -178,14 +213,10 @@ public class MainActivity extends AppCompatActivity {
         CardView bottomNav = findViewById(R.id.bottomNavCard);
         if (bottomNav != null) {
             bottomNav.setTranslationY(100f);
-            bottomNav.animate()
-                    .translationY(0f)
-                    .setDuration(500)
-                    .setInterpolator(new AccelerateDecelerateInterpolator())
-                    .setStartDelay(300)
-                    .start();
+            bottomNav.animate().translationY(0f).setDuration(500).setInterpolator(new AccelerateDecelerateInterpolator()).setStartDelay(300).start();
         }
     }
+
     private void setupClickListeners() {
         // Add touch animations to bottom navigation icons
         ImageView homeIcon = findViewById(R.id.homeIcon);

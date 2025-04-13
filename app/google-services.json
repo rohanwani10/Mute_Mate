@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "135945692893",
+    "project_id": "mute-mate",
+    "storage_bucket": "mute-mate.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:135945692893:android:b6c33b202f1c17c9451d34",
+        "android_client_info": {
+          "package_name": "com.techme.mutemate"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCePqGetdg033OoXGeV0l2D_BVP_KWx_RA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

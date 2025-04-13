@@ -83,6 +83,7 @@
             </androidx.cardview.widget.CardView>
 
             <TextView
+                android:id="@+id/setting_user_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -92,6 +93,7 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/setting_user_email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
@@ -100,6 +102,8 @@
                 android:textSize="14sp" />
 
             <androidx.cardview.widget.CardView
+
+                android:id="@+id/EditProfile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -112,7 +116,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:paddingVertical="12dp"
-                    android:text="Save Data"
+                    android:text="Edit Profile"
                     android:textColor="@color/white"
                     android:textSize="16sp" />
             </androidx.cardview.widget.CardView>

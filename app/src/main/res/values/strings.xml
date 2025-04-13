@@ -1,5 +1,110 @@
 <resources>
     <string name="app_name">MuteMate</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="streak">00</string>
+    <string name="xp">0000XP</string>
+    <string name="unit_no">Unit 1</string>
+    <string name="unit_title">Learning Basics</string>
+    <string name="title1">Beginning with Basics</string>
+    <string name="title2">Going through the Greetings</string>
+    <string name="title3">Mastering the Everyday signs</string>
+    <string name="title4">Focusing like never before</string>
+    <string name="title5">Starting Conversations</string>
+    <string name="one">1</string>
+    <string name="two">2</string>
+    <string name="three">3</string>
+    <string name="four">4</string>
+    <string name="five">5</string>
+    <string name="level1">Level 1 - Starting with A</string>
+    <string name="start">Start +100 XP</string>
+    <string name="notes">Make some notes..</string>
+
+    <string name="register_slogan">Speak Without Words, Connect Without Limits!</string>
+    <string name="username_text">Username</string>
+    <string name="signup_text">SignUp</string>
+    <string name="password_text">Password</string>
+    <string name="email_text">Email</string>
+    <string name="submit_text">Submit</string>
+    <string name="already_account_text">Already have an account?Login</string>
+    <string name="login_text">Login</string>
+    <string name="register_redirect">Didn\'t have an account? Create one</string>
+    <string name="image_desc">mute_talk_image</string>
+    <string name="name_text">Name</string>
+    <string name="e_mail_text">E-mail</string>
+    <string name="country_text">Country</string>
+    <string name="birthdate_text">Birthdate</string>
+    <string name="contact_text">Contact</string>
+    <string name="gender_text">Gender</string>
+    <string name="rb_male">Male</string>
+    <string name="female_text">Female</string>
+    <string name="pr_other_text">Other</string>
+    <string name="profile_enter_username">Enter Username</string>
+    <string name="profile_enter_email">Enter email</string>
+    <string name="profile_enter_contact">Enter Contact</string>
+    <string name="profile_save_text">Save</string>
+
+
+    <string-array name="country_list">
+        <item>India</item>
+        <item>United States</item>
+        <item>United Kingdom</item>
+        <item>Canada</item>
+        <item>Germany</item>
+        <item>France</item>
+        <item>Australia</item>
+    </string-array>
+
+    <string name="test1_q1">1. The sign language has it\'s own ______ .</string>
+    <string name="test1_q2">2. The sign language is the visual language that has it\'s own ______ .</string>
+    <string name="test1_q3">3. Which alphabet does this hand sign indicates -</string>
+    <string name="test1_q4">4. Which alphabet does this hand sign indicates -</string>
+    <string name="test1_q5">5. Which number does this hand sign indicates -</string>
+    <string name="test1_q6">6. Which number does this hand sign indicates -</string>
+    <string name="test1_q7">7. Which color does this hand sign indicates -</string>
+    <string name="test1_q8">8. Which color does this hand sign indicates -</string>
+    <string name="test1_q9">9. Which emotion does this hand sign indicates -</string>
+    <string name="test1_q10">10. Which emotion does this hand sign indicates -</string>
+
+    <string name="test2_q1">1. Sign Languages are _____</string>
+    <string name="test2_q2">2. Which body part is most important when using sign language?</string>
+    <string name="test2_q3">3. Which family member does this hand sign indicates -</string>
+    <string name="test2_q4">4. Which family member does this hand sign indicates -</string>
+    <string name="test2_q5">5. Which greeting does this hand sign indicates -</string>
+    <string name="test2_q6">6. Which greeting does this hand sign indicates -</string>
+    <string name="test2_q7">7. Which animal does this hand sign indicates -</string>
+    <string name="test2_q8">8. Which animal does this hand sign indicates -</string>
+    <string name="test2_q9">9. Which day of the week does this hand sign indicates -</string>
+    <string name="test2_q10">10. Which day of the week does this hand sign indicates -</string>
+
+    <string name="test3_q1">1. What do facial expressions represent in sign language?</string>
+    <string name="test3_q2">2. What does the \"I Love You\" sign in sign language look like?</string>
+    <string name="test3_q3">3. What does the following sign means -</string>
+    <string name="test3_q4">4. What does the following sign means -</string>
+    <string name="test3_q5">5. Which sport does this hand sign indicates -</string>
+    <string name="test3_q6">6. Which sport does this hand sign indicates -</string>
+    <string name="test3_q7">7. Which food item does this hand sign indicates -</string>
+    <string name="test3_q8">8. Which beverage does this hand sign indicates -</string>
+    <string name="test3_q9">9. What does the following sign means  -</string>
+    <string name="test3_q10">10. What does the following sign means  -</string>
+
+    <string name="test4_q1">1. Which of the following is TRUE about sign language grammar?</string>
+    <string name="test4_q2">2. What does the term \"Deaf culture\" refer to?</string>
+    <string name="test4_q3">3. What does the following sign means -</string>
+    <string name="test4_q4">4. What does the following sign means -</string>
+    <string name="test4_q5">5. What does the following sign means -</string>
+    <string name="test4_q6">6. What does the following sign means -</string>
+    <string name="test4_q7">7. What does the following sign means -</string>
+    <string name="test4_q8">8. What does the following sign means -</string>
+    <string name="test4_q9">9. What does the following sign means  -</string>
+    <string name="test4_q10">10. What does the following sign means  -</string>
+
+    <string name="test5_q1">1.  What is the first university for the deaf in the world?</string>
+    <string name="test5_q2">2. How many official sign languages are there worldwide?</string>
+
+    <string name="test_success">All Good !</string>
+    <string name="test_fail">Please, Try Again !</string>
+    <string name="test_accuracy">Accuracy - 100%</string>
+    <string name="test_time_taken">Time taken - 02:02</string>
+    <string name="ok">OK</string>
+    <string name="reset">Reset</string>
 </resources>

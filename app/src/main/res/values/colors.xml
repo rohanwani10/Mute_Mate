@@ -6,4 +6,13 @@
     <color name="Grotto">#189AB4</color>
     <color name="Blue_Green">#75E6DA</color>
     <color name="Baby_Blue">#D4F1F4</color>
+    <color name="Blue_Grotto">#189AB4</color>
+    <color name="light_gray">#C8C4C4</color>
+    <color name="green">#4BE24F</color>
+    <color name="none">#00000000</color>
+    <color name="Cool_Gray">#A0AAB2</color>
+    <color name="Darker_Gray">#6D6B6B</color>
+    <color name="red">#FF5050</color>
+    <color name="teal_700">#018786</color>
+
 </resources>
