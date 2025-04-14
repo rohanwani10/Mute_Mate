@@ -3,6 +3,7 @@ package com.techme.mutemate;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,6 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class Setting extends AppCompatActivity {
+    //    Firebase variables
     private DatabaseReference databaseReference;
     private FirebaseUser user;
 
@@ -37,6 +39,7 @@ public class Setting extends AppCompatActivity {
             return insets;
         });
 
+//        Set Name and Email of user to edit and check
         TextView setting_user_name = findViewById(R.id.setting_user_name);
         TextView setting_user_email = findViewById(R.id.setting_user_email);
 
@@ -66,7 +69,7 @@ public class Setting extends AppCompatActivity {
 
         }
 
-
+//      Return Home
         TextView returnHome = findViewById(R.id.returnHome);
         returnHome.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,6 +78,8 @@ public class Setting extends AppCompatActivity {
             }
         });
 
+
+//        Edit Profile Button
         CardView profile = findViewById(R.id.EditProfile);
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,6 +88,17 @@ public class Setting extends AppCompatActivity {
                 Intent intent = new Intent(Setting.this, ProfileActivity.class);
                 startActivity(intent);
 
+            }
+        });
+
+
+//        Logout Button
+        LinearLayout logoutButton = findViewById(R.id.logoutButton);
+        logoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(Setting.this,LoginActivity.class));
             }
         });
 
