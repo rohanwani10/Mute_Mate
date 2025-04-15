@@ -14,6 +14,14 @@
     <color name="Darker_Gray">#6D6B6B</color>
     <color name="red">#FF5050</color>
     <color name="teal_700">#018786</color>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary_light">#C5CAE9</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent_light">#FF80AB</color>
+    <color name="lightGray">#EEEEEE</color>
 
+    <color name="textColorPrimary">#212121</color>
+    <color name="textColorSecondary">#757575</color>
 
 </resources>

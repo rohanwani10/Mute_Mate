@@ -3,8 +3,8 @@
     android:shape="oval">
     <stroke
         android:width="2dp"
-        android:color="@color/colorAccent" />
-    <solid android:color="@color/white" />
+        android:color="#AAAAAA" />
+    <solid android:color="#EEEEEE" />
     <padding
         android:bottom="2dp"
         android:left="2dp"

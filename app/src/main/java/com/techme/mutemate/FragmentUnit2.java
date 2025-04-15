@@ -9,7 +9,7 @@ import android.widget.ImageView;
 
 public class FragmentUnit2 extends Fragment {
 
-    ImageView l1, l2, l3, l4, l5, l6, ch2_test;
+    com.google.android.material.card.MaterialCardView l1, l2, l3, l4, l5, l6, ch2_test;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
