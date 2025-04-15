@@ -1,7 +1,10 @@
 package com.techme.mutemate;
 
 import android.content.Intent;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -26,6 +29,7 @@ public class Setting extends AppCompatActivity {
     //    Firebase variables
     private DatabaseReference databaseReference;
     private FirebaseUser user;
+    private final String BASE_URL = "https://rohanwani10.github.io/TechMe_MuteMate/#/";
 
 
     @Override
@@ -91,6 +95,70 @@ public class Setting extends AppCompatActivity {
             }
         });
 
+//        Notification
+        LinearLayout Notification = findViewById(R.id.Notification);
+        Notification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//               navigate to the settings of the device
+                Intent intent = new Intent();
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    intent.setAction(Settings.ACTION_APP_NOTIFICATION_SETTINGS);
+                    intent.putExtra(Settings.EXTRA_APP_PACKAGE, getPackageName());
+                } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    intent.setAction(Settings.ACTION_APP_NOTIFICATION_SETTINGS);
+                    intent.putExtra("app_package", getPackageName());
+                    intent.putExtra("app_uid", getApplicationInfo().uid);
+                } else {
+                    intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                    intent.setData(Uri.parse("package:" + getPackageName()));
+                }
+
+                startActivity(intent);
+            }
+        });
+
+//        Terms and condition
+        LinearLayout terms = findViewById(R.id.termsandcondition);
+        terms.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(BASE_URL + "termsandcondition"));
+                startActivity(intent);
+
+            }
+        });
+
+//        Privacy and policy
+        LinearLayout privacy_and_policy = findViewById(R.id.privacy_and_policy);
+        privacy_and_policy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(BASE_URL + "privacyandpolicy"));
+                startActivity(intent);
+            }
+        });
+
+//        Support
+        LinearLayout support = findViewById(R.id.support);
+        support.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(BASE_URL + "support"));
+                startActivity(intent);
+            }
+        });
+
+//        Community Guidelines
+        LinearLayout guidlines = findViewById(R.id.community_guidelines);
+        guidlines.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(BASE_URL + "guidelines"));
+                startActivity(intent);
+            }
+        });
 
 //        Logout Button
         LinearLayout logoutButton = findViewById(R.id.logoutButton);
@@ -98,7 +166,7 @@ public class Setting extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(Setting.this,LoginActivity.class));
+                startActivity(new Intent(Setting.this, LoginActivity.class));
             }
         });
 

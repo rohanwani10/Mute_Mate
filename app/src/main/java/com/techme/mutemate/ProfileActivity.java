@@ -20,11 +20,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 
 import java.util.Calendar;
 import java.util.HashMap;
@@ -33,7 +33,7 @@ import java.util.Map;
 public class ProfileActivity extends AppCompatActivity {
 
     private Spinner spinner;
-    private EditText birthdate, username, email,contact;
+    private EditText birthdate, username, email, contact;
     private RadioGroup radioGroupGender;
     private Button btnSave;
     private TextView usernameTitle;
@@ -61,7 +61,6 @@ public class ProfileActivity extends AppCompatActivity {
         btnSave = findViewById(R.id.profile_save_btn);
 
 
-
         user = FirebaseAuth.getInstance().getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference("Users");
 
@@ -70,8 +69,7 @@ public class ProfileActivity extends AppCompatActivity {
         }
 
 
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.country_list, R.layout.spinner_item);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.country_list, R.layout.spinner_item);
         adapter.setDropDownViewResource(R.layout.spinner_item);
         spinner.setAdapter(adapter);
 
@@ -94,11 +92,10 @@ public class ProfileActivity extends AppCompatActivity {
             int month = calendar.get(Calendar.MONTH);
             int day = calendar.get(Calendar.DAY_OF_MONTH);
 
-            DatePickerDialog datePickerDialog = new DatePickerDialog(this,
-                    (DatePicker view, int selectedYear, int selectedMonth, int selectedDay) -> {
-                        String selectedDate = selectedDay + "/" + (selectedMonth + 1) + "/" + selectedYear;
-                        birthdate.setText(selectedDate);
-                    }, year, month, day);
+            DatePickerDialog datePickerDialog = new DatePickerDialog(this, (DatePicker view, int selectedYear, int selectedMonth, int selectedDay) -> {
+                String selectedDate = selectedDay + "/" + (selectedMonth + 1) + "/" + selectedYear;
+                birthdate.setText(selectedDate);
+            }, year, month, day);
 
             datePickerDialog.show();
         });
@@ -116,7 +113,7 @@ public class ProfileActivity extends AppCompatActivity {
             if (selectedRadioButton != null) {
                 selectedRadioButton.setTextColor(getResources().getColor(R.color.teal_700)); // highlighted color
                 selectedGender = selectedRadioButton.getText().toString();
-         }
+            }
         });
         btnSave.setOnClickListener(v -> saveProfileData());
     }
@@ -172,9 +169,10 @@ public class ProfileActivity extends AppCompatActivity {
     private void saveProfileData() {
         String enteredBirthdate = birthdate.getText().toString().trim();
         String enteredContact = contact.getText().toString().trim();
+        String enteredUsername = username.getText().toString().trim();
 
 
-        if (enteredBirthdate.isEmpty() ||enteredContact.isEmpty() || selectedGender.isEmpty() || selectedCountry.isEmpty()) {
+        if (enteredBirthdate.isEmpty() || enteredContact.isEmpty() || selectedGender.isEmpty() || selectedCountry.isEmpty()) {
             Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -183,11 +181,11 @@ public class ProfileActivity extends AppCompatActivity {
             String userId = user.getUid();
             DatabaseReference userRef = databaseReference.child(userId);
             Map<String, Object> updateMap = new HashMap<>();
+            updateMap.put("username", enteredUsername);
             updateMap.put("birthdate", enteredBirthdate);
             updateMap.put("gender", selectedGender);
             updateMap.put("country", selectedCountry);
-            updateMap.put("contact",enteredContact);
-
+            updateMap.put("contact", enteredContact);
 
 
             userRef.updateChildren(updateMap).addOnCompleteListener(task -> {
@@ -199,4 +197,5 @@ public class ProfileActivity extends AppCompatActivity {
             });
         }
     }
+
 }

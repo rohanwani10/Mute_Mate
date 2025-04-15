@@ -1,4 +1,12 @@
 <resources>
+    <string name="register_slogan">Connect with friends, share moments</string>
+    <string name="image_desc">App Logo</string>
+    <string name="login_text">Sign In</string>
+    <string name="email_text">Email</string>
+    <string name="password_text">Password</string>
+    <string name="submit_text">Login</string>
+    <string name="register_redirect">Don\'t have an account? <b>Register Now</b></string>
+
     <string name="app_name">MuteMate</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="streak">00</string>
@@ -19,16 +27,9 @@
     <string name="start">Start +100 XP</string>
     <string name="notes">Make some notes..</string>
 
-    <string name="register_slogan">Speak Without Words, Connect Without Limits!</string>
     <string name="username_text">Username</string>
     <string name="signup_text">SignUp</string>
-    <string name="password_text">Password</string>
-    <string name="email_text">Email</string>
-    <string name="submit_text">Submit</string>
     <string name="already_account_text">Already have an account?Login</string>
-    <string name="login_text">Login</string>
-    <string name="register_redirect">Didn\'t have an account? Create one</string>
-    <string name="image_desc">mute_talk_image</string>
     <string name="name_text">Name</string>
     <string name="e_mail_text">E-mail</string>
     <string name="country_text">Country</string>
