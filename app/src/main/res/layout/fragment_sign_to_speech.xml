@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/Baby_Blue"
+    tools:context=".SignToSpeechFragment">
+
+    <!-- Camera View Container with Rounded Corners - LARGE SIZE -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cameraCard"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="6dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.55"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <FrameLayout
+            android:id="@+id/cameraViewContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible">
+
+            <androidx.camera.view.PreviewView
+                android:id="@+id/previewView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <com.techme.mutemate.HandOverlayView
+                android:id="@+id/handOverlayView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:id="@+id/tvCameraGuide"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_horizontal"
+                android:layout_marginBottom="8dp"
+                android:background="#80000000"
+                android:padding="8dp"
+                android:text="@string/camera_guide"
+                android:textColor="#FFFFFF" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/btnToggleCamera"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_margin="16dp"
+                android:backgroundTint="@color/Blue_Grotto"
+                android:contentDescription="Toggle Camera"
+                android:src="@drawable/ic_switch_camera"
+                app:fabSize="mini"
+                app:tint="@android:color/white" />
+        </FrameLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Text Result Card -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/textResultCard"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cameraCard">
+
+        <TextView
+            android:id="@+id/tvDetectedText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="top|start"
+            android:hint="@string/text_hint"
+            android:padding="16dp"
+            android:scrollbars="vertical"
+            android:textColor="@color/NavyBlue"
+            android:textSize="18sp" />
+    </androidx.cardview.widget.CardView>
+
+    <!-- Action Buttons -->
+    <LinearLayout
+        android:id="@+id/buttonContainer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnClear"
+            android:layout_width="0dp"
+            android:layout_height="54dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:backgroundTint="@color/Blue_Grotto"
+            android:text="Clear"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            app:cornerRadius="27dp"
+            app:icon="@android:drawable/ic_menu_delete"
+            app:iconGravity="textStart"
+            app:iconTint="@android:color/white" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSpeak"
+            android:layout_width="0dp"
+            android:layout_height="54dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/Blue_Grotto"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:text="Speak"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            app:cornerRadius="27dp"
+            app:icon="@drawable/ic_mic"
+            app:iconGravity="textStart"
+            app:iconTint="@android:color/white" />
+    </LinearLayout>
+
+    <!-- Status Bar - Removed -->
+
+</androidx.constraintlayout.widget.ConstraintLayout> 

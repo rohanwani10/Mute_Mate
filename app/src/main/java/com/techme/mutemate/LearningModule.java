@@ -59,6 +59,7 @@ public class LearningModule extends AppCompatActivity {
         streaktext = findViewById(R.id.streakText);
 
         temp = findViewById(R.id.b1);
+        temp.setBackgroundColor(getResources().getColor(R.color.green));
         unit = findViewById(R.id.unitNo);
         unitName = findViewById(R.id.unitName);
         unitImg = findViewById(R.id.unitImg);

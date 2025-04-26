@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Translation modes -->
+    <string-array name="translation_modes">
+        <item>Sign Language to Speech</item>
+        <item>Speech to Sign Language</item>
+    </string-array>
+
+    <!-- Available languages -->
+    <string-array name="available_languages">
+        <item>English</item>
+        <item>Spanish</item>
+        <item>French</item>
+        <item>German</item>
+        <item>Hindi</item>
+
+    </string-array>
+
+    <!-- Language codes for APIs -->
+    <string-array name="language_codes">
+        <item>en</item>
+        <item>es</item>
+        <item>fr</item>
+        <item>de</item>
+        <item>hi</item>
+    </string-array>
+
+    <!-- Sign language systems -->
+    <string-array name="sign_languages">
+        <item>American Sign Language (ASL)</item>
+        <item>Indian Sign Language (ISL)</item>
+        <item>British Sign Language (BSL)</item>
+        <item>French Sign Language (LSF)</item>
+        <item>German Sign Language (DGS)</item>
+    </string-array>
+
+    <!-- Sign language system codes -->
+    <string-array name="sign_language_codes">
+        <item>asl</item>
+        <item>isl</item>
+        <item>bsl</item>
+        <item>lsf</item>
+        <item>dgs</item>
+    </string-array>
+</resources>

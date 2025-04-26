@@ -277,14 +277,13 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
+                        android:layout_weight="1"
                         android:background="@drawable/radio_selector"
                         android:button="@null"
-                        android:textColor="@color/radio_button_text_color"
-                        android:paddingStart="32dp"
-                        android:paddingTop="8dp"
-                        android:paddingEnd="16dp"
-                        android:paddingBottom="8dp"
+                        android:drawableLeft="@drawable/male"
+                        android:padding="10dp"
                         android:text="@string/rb_male"
+                        android:textColor="@color/radio_button_text_color"
                         android:textStyle="bold" />
 
                     <RadioButton
@@ -292,28 +291,26 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
+                        android:layout_weight="1"
                         android:background="@drawable/radio_selector"
-                        android:textColor="@color/radio_button_text_color"
                         android:button="@null"
-                        android:paddingStart="32dp"
-                        android:paddingTop="8dp"
-                        android:paddingEnd="16dp"
-                        android:paddingBottom="8dp"
+                        android:drawableLeft="@drawable/female"
+                        android:padding="10dp"
                         android:text="@string/female_text"
+                        android:textColor="@color/radio_button_text_color"
                         android:textStyle="bold" />
 
                     <RadioButton
                         android:id="@+id/radioOther"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/radio_button_text_color"
+                        android:layout_weight="1"
                         android:background="@drawable/radio_selector"
                         android:button="@null"
-                        android:paddingStart="32dp"
-                        android:paddingTop="8dp"
-                        android:paddingEnd="16dp"
-                        android:paddingBottom="8dp"
+                        android:drawableLeft="@drawable/other"
+                        android:padding="10dp"
                         android:text="@string/pr_other_text"
+                        android:textColor="@color/radio_button_text_color"
                         android:textStyle="bold" />
 
                 </RadioGroup>

@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/fragment_unit2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -20,9 +19,9 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/Baby_Blue"
             app:cardCornerRadius="12dp"
-            app:cardElevation="4dp">
+            app:cardElevation="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -43,9 +42,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/title2"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/colorPrimary" />
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
                 <View
                     android:id="@+id/hline2"
@@ -67,15 +66,15 @@
                 android:layout_width="85dp"
                 android:layout_height="85dp"
                 android:layout_alignParentEnd="true"
-                android:layout_marginEnd="40dp"
                 android:layout_marginTop="36dp"
-                app:cardCornerRadius="42.5dp"
-                app:cardElevation="6dp"
-                app:strokeWidth="2dp"
-                app:strokeColor="@color/colorAccent"
+                android:layout_marginEnd="40dp"
                 android:clickable="true"
                 android:focusable="true"
-                app:rippleColor="@color/colorAccent_light">
+                app:cardCornerRadius="42.5dp"
+                app:cardElevation="6dp"
+                app:rippleColor="@color/colorAccent_light"
+                app:strokeColor="@color/colorAccent"
+                app:strokeWidth="2dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -104,9 +103,9 @@
                 android:layout_width="100dp"
                 android:layout_height="3dp"
                 android:layout_below="@id/ch2_level1"
-                android:layout_toStartOf="@id/ch2_level1"
                 android:layout_marginTop="40dp"
                 android:layout_marginEnd="-30dp"
+                android:layout_toStartOf="@id/ch2_level1"
                 android:background="@drawable/dotted_line"
                 android:rotation="135" />
 
@@ -117,13 +116,13 @@
                 android:layout_height="85dp"
                 android:layout_marginStart="150dp"
                 android:layout_marginTop="120dp"
-                app:cardCornerRadius="42.5dp"
-                app:cardElevation="6dp"
-                app:strokeWidth="2dp"
-                app:strokeColor="@color/colorAccent"
                 android:clickable="true"
                 android:focusable="true"
-                app:rippleColor="@color/colorAccent_light">
+                app:cardCornerRadius="42.5dp"
+                app:cardElevation="6dp"
+                app:rippleColor="@color/colorAccent_light"
+                app:strokeColor="@color/colorAccent"
+                app:strokeWidth="2dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -147,21 +146,14 @@
             </com.google.android.material.card.MaterialCardView>
 
             <!-- Greeting Image with Card -->
-            <androidx.cardview.widget.CardView
-                android:id="@+id/greeting_card"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <ImageView
+                android:layout_width="130dp"
+                android:layout_height="130dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="100dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="8dp">
-
-                <ImageView
-                    android:layout_width="130dp"
-                    android:layout_height="130dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/greeting" />
-            </androidx.cardview.widget.CardView>
+                android:backgroundTint="@color/Baby_Blue"
+                android:scaleType="centerCrop"
+                android:src="@drawable/greeting" />
 
             <!-- Path Line 2 -->
             <View
@@ -170,8 +162,8 @@
                 android:layout_height="3dp"
                 android:layout_below="@id/ch2_level2"
                 android:layout_alignStart="@id/ch2_level2"
-                android:layout_marginTop="10dp"
                 android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/dotted_line"
                 android:rotation="45" />
 
@@ -183,13 +175,13 @@
                 android:layout_below="@id/ch2_level2"
                 android:layout_marginStart="140dp"
                 android:layout_marginTop="45dp"
-                app:cardCornerRadius="42.5dp"
-                app:cardElevation="6dp"
-                app:strokeWidth="2dp"
-                app:strokeColor="@color/colorAccent"
                 android:clickable="true"
                 android:focusable="true"
-                app:rippleColor="@color/colorAccent_light">
+                app:cardCornerRadius="42.5dp"
+                app:cardElevation="6dp"
+                app:rippleColor="@color/colorAccent_light"
+                app:strokeColor="@color/colorAccent"
+                app:strokeWidth="2dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -219,8 +211,8 @@
                 android:layout_height="3dp"
                 android:layout_below="@id/ch2_level3"
                 android:layout_alignStart="@id/ch2_level3"
-                android:layout_marginTop="10dp"
                 android:layout_marginStart="-20dp"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/dotted_line"
                 android:rotation="-45" />
 
@@ -232,13 +224,13 @@
                 android:layout_below="@id/ch2_level3"
                 android:layout_marginStart="70dp"
                 android:layout_marginTop="45dp"
-                app:cardCornerRadius="42.5dp"
-                app:cardElevation="6dp"
-                app:strokeWidth="2dp"
-                app:strokeColor="@color/colorAccent"
                 android:clickable="true"
                 android:focusable="true"
-                app:rippleColor="@color/colorAccent_light">
+                app:cardCornerRadius="42.5dp"
+                app:cardElevation="6dp"
+                app:rippleColor="@color/colorAccent_light"
+                app:strokeColor="@color/colorAccent"
+                app:strokeWidth="2dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -262,23 +254,16 @@
             </com.google.android.material.card.MaterialCardView>
 
             <!-- High Five Image with Card -->
-            <androidx.cardview.widget.CardView
-                android:id="@+id/high_five_card"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
                 android:layout_below="@id/ch2_level3"
-                android:layout_toEndOf="@id/ch2_level4"
                 android:layout_marginStart="70dp"
                 android:layout_marginTop="20dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="8dp">
-
-                <ImageView
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/high_five" />
-            </androidx.cardview.widget.CardView>
+                android:layout_toEndOf="@id/ch2_level4"
+                android:scaleType="centerCrop"
+                android:src="@drawable/high_five" />
 
             <!-- Path Line 4 -->
             <View
@@ -287,8 +272,8 @@
                 android:layout_height="3dp"
                 android:layout_below="@id/ch2_level4"
                 android:layout_alignStart="@id/ch2_level4"
-                android:layout_marginTop="10dp"
                 android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/dotted_line"
                 android:rotation="45" />
 
@@ -300,13 +285,13 @@
                 android:layout_below="@id/ch2_level4"
                 android:layout_marginStart="100dp"
                 android:layout_marginTop="45dp"
-                app:cardCornerRadius="42.5dp"
-                app:cardElevation="6dp"
-                app:strokeWidth="2dp"
-                app:strokeColor="@color/colorAccent"
                 android:clickable="true"
                 android:focusable="true"
-                app:rippleColor="@color/colorAccent_light">
+                app:cardCornerRadius="42.5dp"
+                app:cardElevation="6dp"
+                app:rippleColor="@color/colorAccent_light"
+                app:strokeColor="@color/colorAccent"
+                app:strokeWidth="2dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -330,21 +315,14 @@
             </com.google.android.material.card.MaterialCardView>
 
             <!-- Business Image with Card -->
-            <androidx.cardview.widget.CardView
-                android:id="@+id/business_card"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
                 android:layout_below="@id/ch2_level5"
                 android:layout_marginTop="20dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="8dp">
-
-                <ImageView
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/business" />
-            </androidx.cardview.widget.CardView>
+                android:scaleType="centerCrop"
+                android:src="@drawable/business" />
 
             <!-- Path Line 5 -->
             <View
@@ -364,16 +342,16 @@
                 android:layout_width="85dp"
                 android:layout_height="85dp"
                 android:layout_below="@id/ch2_level5"
-                android:layout_toEndOf="@id/business_card"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="55dp"
-                app:cardCornerRadius="42.5dp"
-                app:cardElevation="6dp"
-                app:strokeWidth="2dp"
-                app:strokeColor="@color/colorAccent"
+                android:layout_toEndOf="@id/ch2_level5"
                 android:clickable="true"
                 android:focusable="true"
-                app:rippleColor="@color/colorAccent_light">
+                app:cardCornerRadius="42.5dp"
+                app:cardElevation="6dp"
+                app:rippleColor="@color/colorAccent_light"
+                app:strokeColor="@color/colorAccent"
+                app:strokeWidth="2dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -403,8 +381,8 @@
                 android:layout_height="3dp"
                 android:layout_below="@id/ch2_level6"
                 android:layout_alignStart="@id/ch2_level6"
-                android:layout_marginTop="10dp"
                 android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/dotted_line"
                 android:rotation="45" />
 
@@ -418,13 +396,13 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="45dp"
                 android:layout_marginBottom="20dp"
-                app:cardCornerRadius="45dp"
-                app:cardElevation="8dp"
-                app:strokeWidth="3dp"
-                app:strokeColor="@color/colorPrimary"
                 android:clickable="true"
                 android:focusable="true"
-                app:rippleColor="@color/colorPrimary_light">
+                app:cardCornerRadius="45dp"
+                app:cardElevation="8dp"
+                app:rippleColor="@color/colorPrimary_light"
+                app:strokeColor="@color/colorPrimary"
+                app:strokeWidth="3dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -441,10 +419,10 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="FINAL TEST"
+                        android:text="TEST"
+                        android:textColor="@color/colorPrimary"
                         android:textSize="12sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/colorPrimary" />
+                        android:textStyle="bold" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 

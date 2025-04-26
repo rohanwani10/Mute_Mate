@@ -3,6 +3,7 @@ package com.techme.mutemate;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
@@ -33,8 +34,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import org.w3c.dom.Text;
-
 
 public class MainActivity extends AppCompatActivity {
     private DatabaseReference databaseReference;
@@ -59,7 +58,15 @@ public class MainActivity extends AppCompatActivity {
 
         ImageView Profile = findViewById(R.id.profileIcon);
         ImageView Notification_btn = findViewById(R.id.notificationButton);
+        ImageView Speech_text = findViewById(R.id.speech_text);
 
+        Speech_text.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this, Speech_to_text_Activity.class);
+                startActivity(intent);
+            }
+        });
         Profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -101,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
                         HelperClass userData = snapshot.getValue(HelperClass.class);
                         if (userData != null) {
                             welcomeText.setText("Hi, "+userData.getUsername());
-                              }
+                        }
                     }
                 }
 
@@ -220,12 +227,12 @@ public class MainActivity extends AppCompatActivity {
         // Add touch animations to bottom navigation icons
         ImageView homeIcon = findViewById(R.id.homeIcon);
         ImageView moduleIcon = findViewById(R.id.moduleIcon);
-        ImageView learningIcon = findViewById(R.id.learningIcon);
+        ImageView speech_text = findViewById(R.id.speech_text);
         ImageView profileIcon = findViewById(R.id.profileIcon);
 
         setupButtonAnimation(homeIcon);
         setupButtonAnimation(moduleIcon);
-        setupButtonAnimation(learningIcon);
+        setupButtonAnimation(speech_text);
         setupButtonAnimation(profileIcon);
 
         // Add animations to notification button

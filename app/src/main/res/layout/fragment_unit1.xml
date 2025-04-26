@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/scrollView2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="30dp"
     android:fillViewport="true"
     android:scrollbars="none"
     tools:context=".FragmentUnit1">
@@ -16,143 +15,444 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <LinearLayout
+        <!-- Enhanced Header with Card View -->
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal"
-            android:padding="4dp">
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/Baby_Blue"
+            app:cardElevation="0dp">
 
-            <View
-                android:id="@+id/hline1"
-                android:layout_width="85dp"
-                android:layout_height="1dp"
-                android:layout_marginTop="11dp"
-                android:layout_marginEnd="10dp"
-                android:background="@color/black" />
-
-            <TextView
-                android:id="@+id/unitSlogan"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
                 android:gravity="center"
-                android:text="@string/title1"
-                android:textSize="16sp" />
+                android:orientation="horizontal"
+                android:padding="16dp">
 
-            <View
-                android:id="@+id/hline2"
-                android:layout_width="85dp"
-                android:layout_height="1dp"
-                android:layout_marginStart="11dp"
-                android:layout_marginTop="10dp"
-                android:background="@color/black" />
-        </LinearLayout>
+                <View
+                    android:id="@+id/hline1"
+                    android:layout_width="60dp"
+                    android:layout_height="2dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@color/colorAccent" />
 
-        <LinearLayout
+                <TextView
+                    android:id="@+id/unitSlogan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/title1"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:id="@+id/hline2"
+                    android:layout_width="60dp"
+                    android:layout_height="2dp"
+                    android:layout_marginStart="10dp"
+                    android:background="@color/colorAccent" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Learning Path with Connecting Lines -->
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="16dp">
+            android:layout_height="wrap_content">
 
-            <ImageView
+            <!-- Level 1 -->
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/level1"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
+                android:layout_width="85dp"
+                android:layout_height="85dp"
                 android:layout_marginStart="70dp"
                 android:layout_marginTop="36dp"
-                android:background="@drawable/unit_border"
-                android:padding="20dp"
-                android:src="@drawable/star"/>
+                android:clickable="true"
+                android:focusable="true"
+                app:cardCornerRadius="42.5dp"
+                app:cardElevation="6dp"
+                app:rippleColor="@color/colorAccent_light"
+                app:strokeColor="@color/colorAccent"
+                app:strokeWidth="2dp">
 
-            <ImageView
-                android:layout_width="160dp"
-                android:layout_height="160dp"
-                android:layout_marginStart="50dp"
-                android:src="@drawable/sign_language" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="8dp">
 
-        </LinearLayout>
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/star" />
 
-        <ImageView
-            android:id="@+id/level2"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            android:layout_marginStart="160dp"
-            android:background="@drawable/unit_border"
-            android:padding="20dp"
-            android:src="@drawable/star" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Level 1"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="25dp">
+            <!-- Sign Language Image with Card -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/sign_language_card"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_toEndOf="@id/level1"
+                android:backgroundTint="@color/Baby_Blue"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp">
 
-            <ImageView
-                android:layout_width="130dp"
-                android:layout_height="130dp"
-                android:src="@drawable/studying" />
+                <ImageView
+                    android:layout_width="160dp"
+                    android:layout_height="160dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/hands" />
+            </androidx.cardview.widget.CardView>
 
-            <ImageView
+            <!-- Path Line 1 -->
+            <View
+                android:id="@+id/path_line1"
+                android:layout_width="120dp"
+                android:layout_height="3dp"
+                android:layout_below="@id/level1"
+                android:layout_alignStart="@id/level1"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/dotted_line"
+                android:rotation="45" />
+
+            <!-- Level 2 -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/level2"
+                android:layout_width="85dp"
+                android:layout_height="85dp"
+                android:layout_below="@id/sign_language_card"
+                android:layout_marginStart="160dp"
+                android:layout_marginTop="20dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardCornerRadius="42.5dp"
+                app:cardElevation="6dp"
+                app:rippleColor="@color/colorAccent_light"
+                app:strokeColor="@color/colorAccent"
+                app:strokeWidth="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/star" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Level 2"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Path Line 2 -->
+            <View
+                android:id="@+id/path_line2"
+                android:layout_width="120dp"
+                android:layout_height="3dp"
+                android:layout_below="@id/level2"
+                android:layout_alignStart="@id/level2"
+                android:layout_marginStart="-60dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/dotted_line"
+                android:rotation="-45" />
+
+            <!-- Studying Image with Card -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/studying_card"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/level2"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="45dp"
+                android:backgroundTint="@color/Baby_Blue"
+                app:cardCornerRadius="16dp"
+
+                app:cardElevation="0dp">
+
+                <ImageView
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/studying" />
+            </androidx.cardview.widget.CardView>
+
+            <!-- Level 3 -->
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/level3"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
+                android:layout_width="85dp"
+                android:layout_height="85dp"
+                android:layout_alignTop="@id/studying_card"
                 android:layout_marginStart="50dp"
                 android:layout_marginTop="24dp"
-                android:background="@drawable/unit_border"
-                android:padding="20dp"
-                android:src="@drawable/star"/>
-        </LinearLayout>
+                android:layout_toEndOf="@id/studying_card"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardCornerRadius="42.5dp"
+                app:cardElevation="6dp"
+                app:rippleColor="@color/colorAccent_light"
+                app:strokeColor="@color/colorAccent"
+                app:strokeWidth="2dp">
 
-        <ImageView
-            android:id="@+id/level4"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            android:layout_marginStart="130dp"
-            android:background="@drawable/unit_border"
-            android:padding="20dp"
-            android:src="@drawable/star" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="8dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/star" />
 
-            <ImageView
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Level 3"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Path Line 3 -->
+            <View
+                android:id="@+id/path_line3"
+                android:layout_width="80dp"
+                android:layout_height="3dp"
+                android:layout_below="@id/studying_card"
+                android:layout_marginStart="180dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/dotted_line"
+                android:rotation="-45" />
+
+            <!-- Level 4 -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/level4"
+                android:layout_width="85dp"
+                android:layout_height="85dp"
+                android:layout_below="@id/studying_card"
+                android:layout_marginStart="130dp"
+                android:layout_marginTop="40dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardCornerRadius="42.5dp"
+                app:cardElevation="6dp"
+                app:rippleColor="@color/colorAccent_light"
+                app:strokeColor="@color/colorAccent"
+                app:strokeWidth="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/star" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Level 4"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Path Line 4 -->
+            <View
+                android:id="@+id/path_line4"
+                android:layout_width="100dp"
+                android:layout_height="3dp"
+                android:layout_below="@id/level4"
+                android:layout_alignStart="@id/level4"
+                android:layout_marginStart="-70dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/dotted_line"
+                android:rotation="-45" />
+
+            <!-- Level 5 -->
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/level5"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
+                android:layout_width="85dp"
+                android:layout_height="85dp"
+                android:layout_below="@id/level4"
                 android:layout_marginStart="60dp"
-                android:layout_marginTop="30dp"
-                android:background="@drawable/unit_border"
-                android:padding="20dp"
-                android:src="@drawable/star" />
+                android:layout_marginTop="40dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardCornerRadius="42.5dp"
+                app:cardElevation="6dp"
+                app:rippleColor="@color/colorAccent_light"
+                app:strokeColor="@color/colorAccent"
+                app:strokeWidth="2dp">
 
-            <ImageView
-                android:layout_width="160dp"
-                android:layout_height="160dp"
-                android:layout_marginStart="80dp"
-                android:src="@drawable/learning" />
-        </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="8dp">
 
-        <ImageView
-            android:id="@+id/level6"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            android:layout_marginStart="60dp"
-            android:background="@drawable/unit_border"
-            android:padding="20dp"
-            android:src="@drawable/star" />
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/star" />
 
-        <ImageView
-            android:id="@+id/test"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            android:layout_marginStart="150dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/unit_border"
-            android:padding="20dp"
-            android:src="@drawable/test" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Level 5"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Learning Image with Card -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/learning_card"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/level5"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="-5dp"
+                android:layout_toEndOf="@id/level5"
+
+                android:backgroundTint="@color/Baby_Blue"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp">
+
+                <ImageView
+                    android:layout_width="160dp"
+                    android:layout_height="160dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/learning" />
+            </androidx.cardview.widget.CardView>
+
+            <!-- Path Line 5 -->
+            <View
+                android:id="@+id/path_line5"
+                android:layout_width="50dp"
+                android:layout_height="3dp"
+                android:layout_below="@id/level5"
+                android:layout_alignStart="@id/level5"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/dotted_line"
+                android:rotation="90" />
+
+            <!-- Level 6 -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/level6"
+                android:layout_width="85dp"
+                android:layout_height="85dp"
+                android:layout_below="@id/learning_card"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="20dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardCornerRadius="42.5dp"
+                app:cardElevation="6dp"
+                app:rippleColor="@color/colorAccent_light"
+                app:strokeColor="@color/colorAccent"
+                app:strokeWidth="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/star" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Level 6"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Path Line 6 -->
+            <View
+                android:id="@+id/path_line6"
+                android:layout_width="120dp"
+                android:layout_height="3dp"
+                android:layout_below="@id/level6"
+                android:layout_alignStart="@id/level6"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/dotted_line"
+                android:rotation="45" />
+
+            <!-- Test Node -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/test"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_below="@id/level6"
+                android:layout_marginStart="150dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="20dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardCornerRadius="45dp"
+                app:cardElevation="8dp"
+                app:rippleColor="@color/colorPrimary_light"
+                app:strokeColor="@color/colorPrimary"
+                app:strokeWidth="3dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/test" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="TEST"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+
+        </RelativeLayout>
 
     </LinearLayout>
 </ScrollView>

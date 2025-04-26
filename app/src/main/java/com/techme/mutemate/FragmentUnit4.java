@@ -9,20 +9,20 @@ import android.widget.ImageView;
 
 public class FragmentUnit4 extends Fragment {
 
-    ImageView l1, l2, l3, l4, l5, l6, ch4_test;
+    com.google.android.material.card.MaterialCardView l1, l2, l3, l4, l5, l6, ch4_test;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_unit4, container, false);
-        l1 = view.findViewById(R.id.ch4_level1);
-        l2 = view.findViewById(R.id.ch4_level2);
-        l3 = view.findViewById(R.id.ch4_level3);
-        l4 = view.findViewById(R.id.ch4_level4);
-        l5 = view.findViewById(R.id.ch4_level5);
-        l6 = view.findViewById(R.id.ch4_level6);
-        ch4_test = view.findViewById(R.id.ch4_test);
+        l1 = view.findViewById(R.id.level1);
+        l2 = view.findViewById(R.id.level2);
+        l3 = view.findViewById(R.id.level3);
+        l4 = view.findViewById(R.id.level4);
+        l5 = view.findViewById(R.id.level5);
+        l6 = view.findViewById(R.id.level6);
+        ch4_test = view.findViewById(R.id.test);
 
         l1.setOnClickListener(v -> LearningModule.showDialog("Level 1 - Speak about You !", "Start +100 XP",19));
         l2.setOnClickListener(v -> LearningModule.showDialog("Level 2 - Initiating the Conversation", "Start +100 XP",20));

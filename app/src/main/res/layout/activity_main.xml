@@ -601,6 +601,7 @@
             </FrameLayout>
 
             <ImageView
+
                 android:id="@+id/moduleIcon"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
@@ -613,7 +614,7 @@
                 app:tint="@color/NavyBlue" />
 
             <ImageView
-                android:id="@+id/learningIcon"
+                android:id="@+id/speech_text"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_gravity="center"
