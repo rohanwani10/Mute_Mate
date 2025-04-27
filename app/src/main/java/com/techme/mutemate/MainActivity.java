@@ -4,6 +4,7 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.media.Image;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
@@ -59,6 +60,49 @@ public class MainActivity extends AppCompatActivity {
         ImageView Profile = findViewById(R.id.profileIcon);
         ImageView Notification_btn = findViewById(R.id.notificationButton);
         ImageView Speech_text = findViewById(R.id.speech_text);
+
+        androidx.cardview.widget.CardView videoCard1 = findViewById(R.id.videoCard1);
+        androidx.cardview.widget.CardView videoCard2 = findViewById(R.id.videoCard2);
+        androidx.cardview.widget.CardView videoCard3 = findViewById(R.id.videoCard3);
+        androidx.cardview.widget.CardView videoCard4 = findViewById(R.id.videoCard4);
+
+        videoCard1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://youtu.be/qcdivQfA41Y?si=81eVuVOouwzZ7PHF"));
+                intent.setPackage("com.google.android.youtube"); // Optional: force to open in YouTube app
+                startActivity(intent);
+            }
+        });
+
+        videoCard2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://youtu.be/vnH2BmcSRMA?si=EvFDEsiZLhj1h5h7"));
+                intent.setPackage("com.google.android.youtube");
+                startActivity(intent);
+            }
+        });
+
+        videoCard3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://youtu.be/VtbYvVDItvg?si=3g388ghyN5GkKzRb"));
+                intent.setPackage("com.google.android.youtube");
+                startActivity(intent);
+            }
+        });
+
+        videoCard4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://youtu.be/drs0_jcKr5w?si=vs9he80xOfwjZV84"));
+                intent.setPackage("com.google.android.youtube");
+                startActivity(intent);
+            }
+        });
+
+
 
         Speech_text.setOnClickListener(new View.OnClickListener() {
             @Override

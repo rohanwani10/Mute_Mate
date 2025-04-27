@@ -106,7 +106,7 @@
             <LinearLayout
                 android:id="@+id/exploreSection"
                 android:layout_width="match_parent"
-                android:layout_height="152dp"
+                android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="24dp"
                 android:orientation="vertical">
@@ -114,7 +114,7 @@
                 <androidx.cardview.widget.CardView
                     android:id="@+id/exploreCard"
                     android:layout_width="match_parent"
-                    android:layout_height="150dp"
+                    android:layout_height="wrap_content"
                     android:tag="exploreCard"
                     app:cardBackgroundColor="@color/white"
                     app:cardCornerRadius="16dp"
@@ -126,21 +126,39 @@
                         android:orientation="horizontal"
                         android:padding="16dp">
 
-                        <TextView
-                            android:id="@+id/exploreText"
+                        <LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="Explore more"
-                            android:textColor="@color/NavyBlue"
-                            android:textSize="14sp"
-                            android:textStyle="bold" />
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/exploreText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Explore more"
+                                android:textColor="@color/NavyBlue"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="10dp"
+                                android:paddingTop="4dp"
+                                android:paddingBottom="10dp"
+                                android:text="Discover tips for smoother conversations"
+                                android:textColor="@color/NavyBlue"
+                                android:textSize="12sp" />
+
+                        </LinearLayout>
 
                         <!-- Commented out QR code -->
-                        <!--<ImageView
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:src="@drawable/qr_code_illustration" />-->
+                        <ImageView
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:src="@drawable/explore_more" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
             </LinearLayout>
@@ -344,8 +362,8 @@
                                     android:id="@+id/avatar1"
                                     android:layout_width="40dp"
                                     android:layout_height="40dp"
-                                    android:contentDescription="User Avatar" />
-                                <!--                                    android:src="@drawable/ic_avatar_1"-->
+                                    android:contentDescription="User Avatar"
+                                    android:src="@drawable/person1" />
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
@@ -418,8 +436,8 @@
                                     android:id="@+id/avatar2"
                                     android:layout_width="40dp"
                                     android:layout_height="40dp"
-                                    android:contentDescription="User Avatar" />
-                                <!--                                    android:src="@drawable/ic_avatar_2"-->
+                                    android:contentDescription="User Avatar"
+                                    android:src="@drawable/person2" />
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
@@ -492,8 +510,8 @@
                                     android:id="@+id/avatar3"
                                     android:layout_width="40dp"
                                     android:layout_height="40dp"
-                                    android:contentDescription="User Avatar" />
-                                <!--                                    android:src="@drawable/ic_avatar_3"-->
+                                    android:contentDescription="User Avatar"
+                                    android:src="@drawable/person3" />
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
