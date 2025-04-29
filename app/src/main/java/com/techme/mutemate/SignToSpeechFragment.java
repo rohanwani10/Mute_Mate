@@ -2,14 +2,12 @@ package com.techme.mutemate;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,7 +33,7 @@ public class SignToSpeechFragment extends Fragment implements SignLanguageAnalyz
     private CardView cameraCard;
     private CardView textResultCard;
     private FloatingActionButton btnToggleCamera;
-    
+
     // Add HandOverlayView reference
     private HandOverlayView handOverlayView;
 
@@ -50,9 +48,9 @@ public class SignToSpeechFragment extends Fragment implements SignLanguageAnalyz
     private static final long SAME_SIGN_TIMEOUT_MS = 1000; // Set to 1 second as requested
     private static final String BACKSPACE_SIGN = "Delete"; // Sign name for deletion
     private static final String CLEAR_SIGN = "Clear"; // Sign name to clear all text
-    
+
     // Confidence threshold to reduce false positives
-    private static final float MIN_CONFIDENCE_THRESHOLD = 0.7f; // Minimum confidence to accept a sign
+    private static final float MIN_CONFIDENCE_THRESHOLD = 0.65f; // Minimum confidence to accept a sign
 
     // Callbacks
     private OnFragmentInteractionListener mListener;
@@ -66,17 +64,36 @@ public class SignToSpeechFragment extends Fragment implements SignLanguageAnalyz
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                          Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_sign_to_speech, container, false);
+
+        view.setFocusableInTouchMode(true);
+        view.requestFocus();
+
+        view.setOnKeyListener((v, keyCode, event) -> {
+            if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN) {
+                    String currentText = currentPhrase.toString();
+                    currentText = currentText + " "; // Add a space at the end
+                    currentPhrase = new StringBuilder(currentText);
+                    return true; // Consume event
+                }
+            }
+            return false;
+        });
+
+
+
         return view;
     }
+
+
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        
+
         // Initialize UI components
         initializeViews(view);
 
@@ -85,11 +102,10 @@ public class SignToSpeechFragment extends Fragment implements SignLanguageAnalyz
 
         // Initialize camera when view is created
         initializeCamera();
-        
+
         // Initialize the phrase from any existing text (e.g., after rotation)
         String existingText = tvDetectedText.getText().toString();
-        if (existingText != null && !existingText.isEmpty() && 
-            !existingText.equals(getString(R.string.text_hint))) {
+        if (existingText != null && !existingText.isEmpty() && !existingText.equals(getString(R.string.text_hint))) {
             currentPhrase = new StringBuilder(existingText);
         }
     }
@@ -100,7 +116,7 @@ public class SignToSpeechFragment extends Fragment implements SignLanguageAnalyz
         btnSpeak = view.findViewById(R.id.btnSpeak);
         btnClear = view.findViewById(R.id.btnClear);
         btnToggleCamera = view.findViewById(R.id.btnToggleCamera);
-        
+
         // Get the HandOverlayView from layout and hide it
         handOverlayView = view.findViewById(R.id.handOverlayView);
         if (handOverlayView != null) {
@@ -125,21 +141,21 @@ public class SignToSpeechFragment extends Fragment implements SignLanguageAnalyz
                 cameraHandler.toggleCamera();
             }
         });
-        
+
         // Check if btnClear exists (might be added in the layout)
         if (btnClear != null) {
             btnClear.setOnClickListener(v -> {
                 clearPhrase();
                 Toast.makeText(requireContext(), "Text cleared", Toast.LENGTH_SHORT).show();
             });
-            
+
             // Add long press for delete functionality
             btnClear.setOnLongClickListener(v -> {
                 deleteLastCharacter();
                 return true;
             });
         }
-        
+
         // Add a long press listener to clear the detected text (as a backup)
         btnSpeak.setOnLongClickListener(v -> {
             clearPhrase();
@@ -166,13 +182,13 @@ public class SignToSpeechFragment extends Fragment implements SignLanguageAnalyz
 
     private void initializeCamera() {
         if (getActivity() == null) return;
-        
+
         // Create and initialize camera handler
         cameraHandler = new CameraHandler(requireContext(), previewView, requireActivity());
 
         // Create sign language analyzer
         signLanguageAnalyzer = new SignLanguageAnalyzer(this);
-        
+
         // Initialize the analyzer with context
         signLanguageAnalyzer.initialize(requireContext());
 
@@ -185,9 +201,10 @@ public class SignToSpeechFragment extends Fragment implements SignLanguageAnalyz
         cameraHandler.setImageAnalyzer(signLanguageAnalyzer);
 
         // Enable camera toggle button if both cameras available
-        btnToggleCamera.setEnabled(
-            cameraHandler.hasFrontCamera() && cameraHandler.hasBackCamera());
+        btnToggleCamera.setEnabled(cameraHandler.hasFrontCamera() && cameraHandler.hasBackCamera());
     }
+
+
 
     // SignLanguageAnalyzer.SignDetectionListener implementation
     @Override
@@ -213,7 +230,7 @@ public class SignToSpeechFragment extends Fragment implements SignLanguageAnalyz
             Toast.makeText(requireContext(), "Error: " + error, Toast.LENGTH_SHORT).show();
         });
     }
-    
+
     // New method from SignDetectionListener interface
     @Override
     public void onHandLandmarksDetected(List<NormalizedLandmark> handLandmarks, int width, int height, boolean isRightHand) {
@@ -232,7 +249,7 @@ public class SignToSpeechFragment extends Fragment implements SignLanguageAnalyz
             if (detectedText != null && !detectedText.isEmpty()) {
                 // Process the detected sign with confidence information
                 processDetectedSign(detectedText, confidence);
-                
+
                 // Status updates removed - no need to show confidence information
             }
         });
@@ -244,8 +261,7 @@ public class SignToSpeechFragment extends Fragment implements SignLanguageAnalyz
         try {
             mListener = (OnFragmentInteractionListener) context;
         } catch (ClassCastException e) {
-            throw new ClassCastException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
+            throw new ClassCastException(context + " must implement OnFragmentInteractionListener");
         }
     }
 
@@ -276,13 +292,13 @@ public class SignToSpeechFragment extends Fragment implements SignLanguageAnalyz
     @Override
     public void onDestroy() {
         super.onDestroy();
-        
+
         // Clean up camera resources
         if (cameraHandler != null) {
             cameraHandler.stopImageAnalysis();
             cameraHandler.shutdown();
         }
-        
+
         // Clean up analyzer
         if (signLanguageAnalyzer != null) {
             signLanguageAnalyzer.close();
@@ -295,7 +311,8 @@ public class SignToSpeechFragment extends Fragment implements SignLanguageAnalyz
 
     /**
      * Process a detected sign and add it to the current phrase
-     * @param sign The detected sign text
+     *
+     * @param sign       The detected sign text
      * @param confidence Confidence level (0-1)
      */
     private void processDetectedSign(String sign, float confidence) {
@@ -315,8 +332,7 @@ public class SignToSpeechFragment extends Fragment implements SignLanguageAnalyz
 
         // Check if it's the same sign as last time and within timeout
         long currentTime = System.currentTimeMillis();
-        if (sign.equals(lastDetectedSign) && 
-            (currentTime - lastSignTimestamp) < SAME_SIGN_TIMEOUT_MS) {
+        if (sign.equals(lastDetectedSign) && (currentTime - lastSignTimestamp) < SAME_SIGN_TIMEOUT_MS) {
             // Same sign detected within timeout period, don't add it again
             return;
         }
@@ -325,21 +341,33 @@ public class SignToSpeechFragment extends Fragment implements SignLanguageAnalyz
         lastDetectedSign = sign;
         lastSignTimestamp = currentTime;
 
+
         // Append the detected sign to the phrase
         if (currentPhrase.length() == 0) {
             // Capitalize the first letter of the phrase
+            for (int i = 0; i < currentPhrase.length(); i++) {
+                if (currentPhrase.charAt(i) == '_') {
+                    currentPhrase.setCharAt(i, ' ');
+                }
+            }
             currentPhrase.append(capitalize(sign));
+
         } else {
             // Add a space before the next word if needed
-            if (!currentPhrase.toString().endsWith(" ")) {
-                currentPhrase.append(" ");
+//            if (!currentPhrase.toString().endsWith("")) {
+//                currentPhrase.append("");
+//            }
+            for (int i = 0; i < currentPhrase.length(); i++) {
+                if (currentPhrase.charAt(i) == '_') {
+                    currentPhrase.setCharAt(i, ' ');
+                }
             }
             currentPhrase.append(sign.toLowerCase());
         }
 
         // Update the UI
         tvDetectedText.setText(currentPhrase.toString());
-        
+
         // Optional: provide haptic feedback when a sign is added
         if (getContext() != null) {
             try {
@@ -353,7 +381,7 @@ public class SignToSpeechFragment extends Fragment implements SignLanguageAnalyz
             }
         }
     }
-    
+
     /**
      * Clear the current phrase
      */
